@@ -7,7 +7,7 @@
  *
  * Note: n will be less than 15,000.
  * 
- * Solution stores pairs of k and j in a List of Pairs (defined below). It traverses the array while 
+ * Solution stores pairs of k and j in a List of Pairs(defined below). It traverses the array while 
  * checking if the current index stores an i valid for any previously stored pair and adds/updates
  * new Pairs
  *
@@ -17,48 +17,52 @@ import java.util.*;
 
 
 public class Pattern132 {
-    
-    public Pattern132(){
+    public static void main(String[] args){
         int[] data1 = {7, 6, 5, 4, 3 , 2 ,1};
-        System.out.println(Arrays.toString(data1) + ":" + process(data1));
+        System.out.println(Arrays.toString(data1) + ":" + pattern132(data1));
     }
     
-    public boolean process(int[] nums){
+    public static boolean pattern132(int[] nums){
+        // list contain possible Pair(k and j) values
+        // last reprents the last number added to a Pair
         List<Pair> list = new ArrayList<>();
-        
         int last = Integer.MIN_VALUE;
+
         for(int i=nums.length-1;i>=0;i--){
-            
-            //adds first Pair to list
+            // adds first Pair to list
             if(list.isEmpty()){
                 list.add(new Pair(nums[i]));
                 last = nums[i];
             }
             
-            //Optimization: Skip duplicates
+            // Skip continuous duplicate values
             if(nums[i] == last){
                 continue;
             } last = nums[i];
             
-            //Optimization: if number greater than last one, add it as a new Pair
+            // If number greater than previous one, it has to be
+            // in a new pair because aj > ak
             if (nums[i] > last){
                 list.add(new Pair(nums[i]));
                 continue;
             }
             
-            //loop through already existing pairs of j and k
+            // Loop through previously added Pair to see if the value
+            // fits as an i values for the pairs' j and k values if
+            // Pair has both i and j values set. If value of j not
+            // set in the Pair, check if value fits as a valid j for
+            // the k value of the pair
             boolean added = false;
             for(int j=0; j<list.size(); j++){
                 Pair p = list.get(j);
 
                 if(p.isFull()){
                     if(nums[i]<p.k){
-                        //found valid i
                         return true;
                     } else if (nums[i]>p.j){
-                        //found a bigger value for J
-                        //Optimization: instead of creating a new pair for old J, use it as the
-                        //value of k 
+                        // Since number is bigger than j value we can
+                        // use number as new value of j since the bigger
+                        // the j value the more options for i and k
                         if(p.j > p.k){
                             p.setK(p.j);
                         }
@@ -67,7 +71,6 @@ public class Pattern132 {
                         added = true;
                     }
                 } else {
-                    //if Pair only has a value of k added to it
                     if(nums[i]>p.k){
                         p.setJ(nums[i]);
                         list.set(j, p);
@@ -76,8 +79,9 @@ public class Pattern132 {
                 }
             }
             
+            // If we can't find a place to add the number in existing pairs, then
+            // add it to a new pair
             if(!added){
-                //if couldn't merge pair with existing pairs, add it as a new pair
                 list.add(new Pair(nums[i]));
             }
             
@@ -85,7 +89,7 @@ public class Pattern132 {
         return false;
     }
     
-    public void printList(List<Pair> list){
+    public static void printList(List<Pair> list){
         for(Pair p: list){
             System.out.print(p + " ");
         }
@@ -95,9 +99,11 @@ public class Pattern132 {
 
 
 class Pair{ 
-    public Integer j, k; 
-    boolean kSet, jSet;
-        
+    // j and k represents indexes in the sequence where k > j
+    // kSet and jSet represent whether k/j is assigned a value
+    Integer j, k; 
+    private boolean kSet, jSet;
+    
     public Pair(int k) { 
       this.k = k; 
       jSet = false;

@@ -8,10 +8,17 @@
  * Note2: There are at least one 0 in the given matrix.
  * Note3: The cells are adjacent in only four directions: up, down, left and right. 
  *
+ * Solution initializes a new array with max values and uses two passes to find the nearest 0.
+ * - The first pass (forwards) is only able to find the nearest 0 if the distance is 1 because
+ *   when it accesses the array location, the only values which have been processed are the
+ *   left and top one
+ * - The second pass (backwards) calculates the distance from nearest 0 by using the left, right,
+ *   up and down values of the index to find the closest location.
+ * 
  */
 
 public class Matrix01 {
-    public Matrix01(){
+    public static void main(String[] args){
         int[][] matrix = {
             { 1, 0, 1, 1, 0, 0, 1, 0, 0, 1 },
             { 0, 1, 1, 0, 1, 0, 1, 0, 1, 1 },
@@ -30,15 +37,13 @@ public class Matrix01 {
         printMatrix(updateMatrix(matrix));
     }
 
-    public int[][] updateMatrix(int[][] matrix){
-        
-        //Create and initialize answer array with max values
+    public static int[][] updateMatrix(int[][] matrix){
         int[][] ans = new int[matrix.length][matrix[0].length];		
         for(int i=0; i<matrix.length; i++)
             for(int j=0;j<matrix[i].length; j++)
                 ans[i][j] = 10000;
         
-        //1st Pass (Forwards): Only left and up values updated by then
+        //1st Pass (Forwards)
         for(int i=0; i<matrix.length; i++){
             for(int j=0;j<matrix[i].length; j++){
                 int min = 10000;
@@ -62,23 +67,23 @@ public class Matrix01 {
             }
         }
         
-        //2nd Pass (Backwards): All of left, right, up and down values updated
+        //2nd Pass (Backwards)
         for(int i=matrix.length-1; i>=0; i--){
             for(int j=matrix[i].length-1;j>=0; j--){
                 int min = 10000;
                 if(matrix[i][j] == 0){
                     ans[i][j] = 0;
                 } else {
-                    //check left
+                    //left
                     if(i-1>=0 && ans[i-1][j] < min)
                         min = ans[i-1][j];
-                    //check right
+                    //right
                     if(i+1<matrix.length && ans[i+1][j] < min)
                         min = ans[i+1][j];
-                    //check up
+                    //up
                     if(j-1>=0 && ans[i][j-1] < min)
                         min = ans[i][j-1];
-                    //check down
+                    //down
                     if(j+1<matrix[i].length && ans[i][j+1] < min)
                         min = ans[i][j+1];
                     ans[i][j] = min+1;

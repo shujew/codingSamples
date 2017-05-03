@@ -1,19 +1,23 @@
 /*
  * Source: https://leetcode.com/problems/add-binary/
- * 
- * Given two binary strings, return their sum (also a binary string).
+ *
+ * Problem: Given two binary strings, return their sum (also a binary string).
+ *
+ * Solution first pre-processes binary strings to ensure that they are of the
+ * same length. Then it carries out the addition keeping track of carry values.
+ * There wasn't a specific max length set for the binary numbers so there is no
+ * handling of overflows implemented.
  *
  */
-
 public class AddBinary {
-    public AddBinary(){
+    public static void main(String[] args){
         String a = "100101";
         String b = "10101";
         System.out.println(addBinary(a,b));
     }
-    
-    public String addBinary(String a, String b) {
-        //pre-process(a and b should be of same length)
+
+    public static String addBinary(String a, String b) {
+        // ensure that a and b are of the same length
         if(a.length() > b.length()){
             int diff = a.length() - b.length();            
             for(int i=0; i<diff; i++)
@@ -24,16 +28,16 @@ public class AddBinary {
                 a = "0"+a;
         }
 
-        //perform addition
+        // perform binary addition
         int carry = 0;
         String ans = "";
-        for(int i=a.length()-1;i>=0;i--){
+
+        for(int i=a.length()-1; i>=0; i--){
             int x = a.charAt(i) - '0';
             int y = b.charAt(i) - '0';
             
             String result = "";
             int sum = x + y + carry;
-            
             if(sum == 0){
                 result = "0";
                 carry = 0;
@@ -53,6 +57,7 @@ public class AddBinary {
             ans = result + ans;
         }
         
+        // last carry value not accounted for in above loop
         if(carry == 1)
             ans = "1" + ans;
 
