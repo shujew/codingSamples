@@ -11,6 +11,8 @@
  * checking if the current index stores an i valid for any previously stored pair and adds/updates
  * new Pairs
  *
+ * Time complexity: O(n^2)
+ *
  */
 
 import java.util.*;

@@ -11,6 +11,8 @@
  * that are BOTH LARGER than a. By not considering the values smaller than a, given that the values
  * is sorted, we avoid duplicates.
  *
+ * Time complexity: O(n^2)
+ *
  */
 
 import java.util.*;

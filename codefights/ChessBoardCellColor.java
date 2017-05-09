@@ -8,6 +8,8 @@
  * as the boolean values true and false. Then it simply compares whether the
  * values(colors) are similar
  *
+ * Time complexity: O(n^2)
+ *
  */
 
 public class ChessBoardCellColor{

@@ -10,6 +10,8 @@
  * runtime. Afterwards, the sign of the answer is calculated and long division is
  * performed with the magnitude (+ve value) of the dividend and divisor
  * 
+ * Time complexity: O(n)
+ *
  */
 
 public class DivideTwoIntegers {

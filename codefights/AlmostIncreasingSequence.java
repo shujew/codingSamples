@@ -10,6 +10,8 @@
  *   1. It tries to find another erroneous pair ignoring the value i
  *   2. It tries to find another erroneous pair ignoring the value i+1
  * If 2 of 3 fails, then we have an answer else there is not answer.
+ * 
+ * Time complexity: O(n)
  *
  */
 

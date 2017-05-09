@@ -12,6 +12,8 @@
  * by using a simple array and an index which keeps track of the last integer added. This
  * reduces the runtime from 15ms to 8ms on LeetCode.
  * 
+ * Time complexity: O(n)
+ *
  */
 
 public class EvalRPN {

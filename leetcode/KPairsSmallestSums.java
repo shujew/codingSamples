@@ -15,7 +15,9 @@
  *   - Array next holds the index of the value in second array for which
  *     the corresponding value in the first array has the smallest sum
  *     with
- * 
+ *
+ * Time complexity: O(k*n)
+ *
  */
 
 import java.util.*;

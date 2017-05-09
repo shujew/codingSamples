@@ -15,6 +15,8 @@
  * returning 1 if it reached the end with everything being valid. Meanwhile, values are 
  * stored in a lookup table as optimization to avoid recalculating already calculated paths.
  * 
+ * Time complexity: O(n) <-- O(2^n) without memoization
+ *
  */
 
 public class DecodeWays {

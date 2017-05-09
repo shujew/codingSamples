@@ -12,6 +12,8 @@
  * of an n-shaped interesting polygon is the area of the (n-1)-shaped interesting
  * polygon and adding (2*(2*n-2)) to it. Thus solution takes advantage of this
  * and solves the problem using recursion.
+ * 
+ * Time complexity: O(n)
  *
  */
 

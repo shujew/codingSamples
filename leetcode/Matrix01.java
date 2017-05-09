@@ -14,7 +14,9 @@
  *   left and top one
  * - The second pass (backwards) calculates the distance from nearest 0 by using the left, right,
  *   up and down values of the index to find the closest location.
- * 
+ *
+ * Time complexity: O(n^2)
+ *
  */
 
 public class Matrix01 {

@@ -8,6 +8,8 @@
  * There wasn't a specific max length set for the binary numbers so there is no
  * handling of overflows implemented.
  *
+ * Time complexity: O(n)
+ *
  */
 
 public class AddBinary {

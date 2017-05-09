@@ -14,6 +14,8 @@
  * encoded values, solution starts by expanding nested encoded values then expand its parent encoded
  * values.
  *
+ * Time complexity: O(n)
+ *
  */
 
 import java.util.*;

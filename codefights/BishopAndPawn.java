@@ -8,6 +8,8 @@
  * capture anything, it needs a diagonal move which is only possible if
  * the diaognal(hyp) has two equal sides.
  *
+ * Time complexity: O(1)
+ *
  */
 
 public class BishopAndPawn{
