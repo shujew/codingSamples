@@ -1,5 +1,9 @@
-# interviewPrep
+# Coding Samples
 
-Thought of having a repository and upload code for interview problems I'm practicing from leetcode. Everything is written in Java.
+Started out as a repository for leetcode problems but turned into a coding sample repository to complement my LinkedIn profile. 
 
-Last Updated: 04/27/17
+Problems are pulled from various sources. Everything so far is written in Java.
+
+LinkedIn Profile: https://www.linkedin.com/in/shuaib-jewon-08a98477/
+
+Last Updated: 05/08/17
