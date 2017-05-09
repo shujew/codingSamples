@@ -9,6 +9,7 @@
  * handling of overflows implemented.
  *
  */
+
 public class AddBinary {
     public static void main(String[] args){
         String a = "100101";
